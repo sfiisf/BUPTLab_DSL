@@ -1,0 +1,134 @@
+STATE begin
+	OUT "您好，欢迎光临xx商城！"
+	OUT "我是客服小祥，很高兴为您服务~"
+	OUT "请问有什么可以帮到您的？"
+	CASE "订单"
+		NEXT queryOrder
+	CASE "退款"
+		NEXT queryRefund
+	CASE "发票"
+		NEXT queryInvoice
+	CASE "优惠活动"
+		NEXT queryPromotion
+	CASE "帮助"
+		NEXT help
+	CASE "没有"
+		OUT "感谢您的光临，祝您购物愉快！"
+		OUT "有任何问题都可以随时联系我哦~"
+		NEXT EXIT
+	CASE "退出"
+		OUT "感谢您的光临，祝您购物愉快！"
+		OUT "有任何问题都可以随时联系我哦~"
+		NEXT EXIT
+	CASE "再见"
+		OUT "感谢您的光临，祝您购物愉快！"
+		OUT "有任何问题都可以随时联系我哦~"
+		NEXT EXIT
+	DEFAULT
+		OUT "抱歉，我没有理解您的问题。"
+		OUT "请您重新输入您的需求。"
+		NEXT help
+
+STATE help
+	OUT "亲，您可以查询以下信息哦："
+	OUT "订单状态，退款进度，发票开具，优惠活动等。"
+	CASE "订单"
+		NEXT queryOrder
+	CASE "退款"
+		NEXT queryRefund
+	CASE "发票"
+		NEXT queryInvoice
+	CASE "优惠活动"
+		NEXT queryPromotion
+	CASE "没有"
+		OUT "感谢您的光临，祝您购物愉快！"
+		OUT "有任何问题都可以随时联系我哦~"
+		NEXT EXIT
+	CASE "退出"
+		OUT "感谢您的光临，祝您购物愉快！"
+		OUT "有任何问题都可以随时联系我哦~"
+		NEXT EXIT
+	CASE "再见"
+		OUT "感谢您的光临，祝您购物愉快！"
+		OUT "有任何问题都可以随时联系我哦~"
+		NEXT EXIT
+	DEFAULT
+		OUT "抱歉，我没有理解您的问题。"
+		OUT "请您重新输入您的需求。"
+		NEXT help
+
+STATE queryOrder
+	OUT "亲，请提供您的订单号，我帮您查询订单状态。"
+	OUT "例如：输入“订单123456”。"
+	CASE "订单"
+		NEXT checkOrder
+	DEFAULT
+		OUT "亲，订单号好像不太对哦，请重新输入。"
+		NEXT queryOrder
+
+STATE queryRefund
+	OUT "亲，退款一般会在1-3个工作日内原路返回您的支付账户。"
+	OUT "若超时未到账，请您提供订单号，我帮您核实处理。"
+	CASE "订单"
+		NEXT checkRefund
+	DEFAULT
+		OUT "抱歉，信息不太完整哦，请您重新输入订单号。"
+		NEXT queryRefund
+
+STATE queryInvoice
+	OUT "亲，发票可在订单完成后申请开具。"
+	OUT "请您提供订单号，我帮您查询发票状态。"
+	CASE "订单"
+		NEXT checkInvoice
+	DEFAULT
+		OUT "抱歉，信息不太完整哦，请您重新输入订单号。"
+		NEXT queryInvoice
+
+STATE queryPromotion
+	OUT "当前店铺正在进行以下优惠活动："
+	OUT "√ 满300减30元"
+	OUT "√ 每周二会员日专享9折优惠"
+	OUT "√ 下单即送精美小礼品！"
+	OUT "亲，活动详情可查看店铺首页哦~"
+	NEXT other
+
+STATE checkOrder
+	OUT "好的，订单号已收到！系统正在为您查询中..."
+	OUT "稍后您会收到订单状态信息，请稍等哦~"
+	NEXT other
+
+STATE checkRefund
+	OUT "好的，我收到您的订单号了！"
+	OUT "系统正在核实退款进度，请稍等片刻~"
+	NEXT other
+
+STATE checkInvoice
+	OUT "您的订单发票信息已提交查询，请稍候！"
+	OUT "若发票未开具或有异常，稍后将为您处理。"
+	NEXT other
+
+STATE other
+	OUT "请问还有什么需要帮助的吗？"
+	CASE "订单"
+		NEXT queryOrder
+	CASE "退款"
+		NEXT queryRefund
+	CASE "发票"
+		NEXT queryInvoice
+	CASE "优惠活动"
+		NEXT queryPromotion
+	CASE "没有"
+		OUT "感谢您的光临，祝您购物愉快！"
+		OUT "有任何问题随时找我哦~"
+		NEXT EXIT
+	CASE "退出"
+		OUT "感谢您的光临，祝您购物愉快！"
+		OUT "有任何问题随时找我哦~"
+		NEXT EXIT
+	CASE "再见"
+		OUT "感谢您的光临，祝您购物愉快！"
+		OUT "有任何问题随时找我哦~"
+		NEXT EXIT
+	DEFAULT
+		OUT "抱歉，我没有理解您的问题，请您重新输入~"
+		NEXT help

@@ -1,0 +1,83 @@
+STATE begin
+	OUT "欢迎致电中国xx"
+	OUT "这里是客服小祥，很高兴为您服务"
+	OUT "请问有什么可以帮到您的"
+	CASE "话费"
+		NEXT queryFare
+	CASE "营业厅"
+		NEXT queryHall
+	CASE "套餐"
+		NEXT query
+	CASE "投诉"
+		NEXT complaint
+	CASE "帮助"
+		NEXT help
+	CASE "没有"
+		OUT "感谢您的来电，祝您生活愉快"
+		NEXT EXIT
+	CASE "退出"
+		OUT "感谢您的来电，祝您生活愉快"
+		NEXT EXIT
+	CASE "再见"
+		OUT "感谢您的来电，祝您生活愉快"
+		NEXT EXIT
+	DEFAULT
+		OUT "抱歉，我没有听清您的询问"
+		OUT "请您复述您的需求"
+		NEXT help
+STATE help
+	OUT "这边可以帮你查询以下业务，请输入您需要的服务"
+	OUT "话费查询、营业厅查询、套餐查询与投诉"
+	CASE "话费"
+		NEXT queryFare
+	CASE "营业厅"
+		NEXT queryHall
+	CASE "套餐"
+		NEXT query
+	CASE "投诉"
+		NEXT complaint
+	DEFAULT
+		OUT "抱歉，我没有听清您的询问"
+		OUT "请您复述您的需求"
+		NEXT help
+STATE queryFare
+	OUT "您的花费余额为xx元"
+	NEXT other
+STATE query
+	OUT "当前有如下套餐"
+	OUT "1.每月9元保号套餐"
+	OUT "2.每月18元省内畅聊套餐"
+	OUT "3.每月59元无限流量套餐"
+	NEXT other
+STATE queryHall
+	OUT "登录移动客户端即可查询离您最近的营业厅位置"
+	NEXT other
+STATE complaint
+	OUT "很抱歉给您带来了不好的体验"
+	OUT "请您留下让您不满意的地方"
+	DEFAULT
+		OUT "感谢您的反馈，我们会尽快根据您的反馈进行改进"
+		NEXT other
+STATE other
+	OUT "请问还有什么可以帮到您的吗"
+	CASE "话费"
+		NEXT queryFare
+	CASE "营业厅"
+		NEXT queryHall
+	CASE "套餐"
+		NEXT query
+	CASE "投诉"
+		NEXT complaint
+	CASE "没有"
+		OUT "感谢您的来电，祝您生活愉快"
+		NEXT EXIT
+	CASE "退出"
+		OUT "感谢您的来电，祝您生活愉快"
+		NEXT EXIT
+	CASE "再见"
+		OUT "感谢您的来电，祝您生活愉快"
+		NEXT EXIT
+	DEFAULT
+		OUT "抱歉，我没有听清您的询问"
+		OUT "请您复述您的需求"
+		NEXT help

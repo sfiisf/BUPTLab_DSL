@@ -1,0 +1,118 @@
+STATE begin
+	OUT "欢迎光临xx之家"
+	OUT "这里是客服小祥，很高兴为您服务"
+	OUT "请问有什么可以帮到您的"
+	CASE "产品"
+		NEXT queryProduct
+	CASE "发货信息"
+		NEXT queryWuliu
+	CASE "物流"
+		NEXT queryWuliu
+	CASE "售后质保"
+		NEXT queryService
+	CASE "帮助"
+		NEXT help
+	CASE "没有"
+		OUT "感谢您的惠顾，祝您生活愉快"
+		OUT "亲您有任何需要的帮助请随时找客服"
+		NEXT EXIT
+	CASE "退出"
+		OUT "感谢您的惠顾，祝您生活愉快"
+		OUT "亲您有任何需要的帮助请随时找客服"
+		NEXT EXIT
+	CASE "再见"
+		OUT "感谢您的惠顾，祝您生活愉快"
+		OUT "亲您有任何需要的帮助请随时找客服"
+		NEXT EXIT
+	DEFAULT
+		OUT "抱歉亲，我没有理解您的问题"
+		OUT "请您复述您的需求"
+		NEXT help
+
+STATE help
+	OUT "亲您可以输入了解以下详情信息"
+	OUT "产品信息查询，发货信息查询，商品售后与质保问题"
+	CASE "产品"
+		NEXT queryProduct
+	CASE "发货信息"
+		NEXT queryWuliu
+	CASE "物流"
+		NEXT queryWuliu
+	CASE "售后质保"
+		NEXT queryService
+	DEFAULT
+		OUT "抱歉亲，我没有理解您的问题"
+		OUT "请您复述您的需求"
+		NEXT help
+
+STATE queryProduct
+	OUT "亲，本店目前在售以下商品，请问您想了解哪些信息"
+	OUT "1 xx电暖器"
+	OUT "2 xx电脑"
+	CASE "1"
+		NEXT Product1
+	CASE "电暖器"
+		NEXT Product1
+	CASE "2"
+		NEXT Product2
+	CASE "电脑"
+		NEXT Product2
+	DEFAULT
+		OUT "抱歉亲，本店暂无该商品"
+		NEXT other
+
+STATE Product1
+	OUT "xx电暖器"
+	OUT "√0-180度百变折叠"
+	OUT "√可控硅无极变频"
+	OUT "√新升级安睡模式"
+	OUT "整机净重约7.5kg"
+	NEXT other
+
+STATE Product2
+	OUT "xx电脑"
+	OUT "√全色域高刷屏"
+	OUT "√4060满血超强性能释放"
+	OUT "√80Wh大电池持久续航"
+	NEXT other
+
+STATE queryWuliu
+	OUT "您好，能拍下就是可以发货的"
+	OUT "店铺一般商品有“xx物流”字样有xx快递发出"
+	OUT "下单后会为您尽快发出"
+	OUT "*多件商品、实物赠品可能出现分包发货的情况"
+	OUT "*预售商品需要您完成尾款支付后发货，无法提前"
+	NEXT other
+
+STATE queryService
+	OUT "全国联保，享三包服务，无人为损坏支持7天无理由退换货"
+	OUT "支持15天内质量问题换货，质保期1年"
+	OUT "贴士：售后请确保无人为损坏，退换货需配件齐全"
+	NEXT other
+
+STATE other
+	OUT "请问还有什么可以帮到亲您的"
+	CASE "产品"
+		NEXT queryProduct
+	CASE "发货信息"
+		NEXT queryWuliu
+	CASE "物流"
+		NEXT queryWuliu
+	CASE "售后质保"
+		NEXT queryService
+	CASE "没有"
+		OUT "感谢您的惠顾，祝您生活愉快"
+		OUT "亲您有任何需要的帮助请随时找客服"
+		NEXT EXIT
+	CASE "退出"
+		OUT "感谢您的惠顾，祝您生活愉快"
+		OUT "亲您有任何需要的帮助请随时找客服"
+		NEXT EXIT
+	CASE "再见"
+		OUT "感谢您的惠顾，祝您生活愉快"
+		OUT "亲您有任何需要的帮助请随时找客服"
+		NEXT EXIT
+	DEFAULT
+		OUT "抱歉亲，我没有理解您的问题"
+		OUT "请您复述您的需求"
+		NEXT help

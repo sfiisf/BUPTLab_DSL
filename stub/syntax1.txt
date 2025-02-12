@@ -1,0 +1,20 @@
+STATE s1
+	CASE "1"
+		OUT "123"
+		NEXT s2
+	CASE "2"
+		OUT "456"
+		NEXT s1
+	DEFAULT
+		OUT "789"
+		NEXT s1
+STATE s2
+	CASE "1"
+		OUT "123"
+		NEXT s2
+	CASE "2"
+		OUT "456"
+		NEXT s1
+	DEFAULT
+		OUT "789"
+		NEXT s1
